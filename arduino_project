@@ -1,1 +1,42 @@
+// C++ code
+//
+int rled=12;
+int gled=8;
+int bled=7;
+int count=0;
+int button=2;
 
+void setup(){
+    pinMode(button,INPUT_PULLUP);// this means intially the push button is on high only(i.e. 1 ) and whenever someone presses it its value becomes 0
+    pinMode(12,OUTPUT); // Set the LED pin as an output
+    pinMode(8,OUTPUT);
+    pinMode(7,OUTPUT);
+}
+ 
+void loop() {
+    digitalWrite(12,HIGH); // Turn red LED on
+    int value=digitalRead(button);
+    if(value==0){
+        count=count+1;
+    }
+    switch(count)
+    {
+      case 1:
+      digitalWrite(12,LOW);
+      digitalWrite(8,HIGH);
+      break;
+      case 2:
+      digitalWrite(12,LOW);
+      digitalWrite(7,HIGH);
+      break;
+      default:
+      digitalWrite(8,LOW);
+      digitalWrite(7,LOW);
+      digitalWrite(12,LOW);
+      break;
+    }
+      
+        
+      
+    delay(1000);
+}
